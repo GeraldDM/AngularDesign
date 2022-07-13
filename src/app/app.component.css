@@ -201,9 +201,22 @@ li a{
 
 
 /*----------------*/
+.table-heading{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  height: 55px;
+  width: 100%;
+  background-color: #F8F9FE;
+  font-family: 'Poppins', sans-serif;
+
+}
 
 
-
+.FirstMainStepperContainer{
+  font-family: 'Poppins', sans-serif;
+}
 
 .mat-stepper-horizontal {
     margin-top: 8px;
@@ -611,3 +624,8 @@ padding: 0% 42%;
 
 }
 
+/*table border*/
+
+.ag-theme-alpine {
+  box-shadow: 5px 15px 15px 0px lightgray;
+}

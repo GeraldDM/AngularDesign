@@ -7,13 +7,15 @@ import {FormControl} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import { AgGridAngular } from "ag-grid-angular";
 import { CellComp } from 'ag-grid-community';
+import Swal from 'sweetalert2'
+import { style } from '@angular/animations';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-
 
 export class AppComponent implements OnInit{
   title = 'ScreenDesign';
@@ -24,6 +26,8 @@ export class AppComponent implements OnInit{
   showFiller = false;
   selected = 'option2';
 
+
+
   @ViewChild('agGrid') agGrid!: AgGridAngular;
 
   onDeleteRow()
@@ -31,7 +35,76 @@ export class AppComponent implements OnInit{
   var selectedData = this.agGrid.api.getSelectedRows();
   this.agGrid.api.updateRowData({ remove: selectedData });
    }
+   addRow() {
+    this.agGrid.api.updateRowData({
+      add: [{ IdNumber: '#', InvoiceNo: '1000000001',CovDescrip: 'VTPL- Property Damage',CovAmount: '300,000.00',PrimRate: '0.3350000000%',PrimAmount: '1,962.33',CommRate: '25.00',CommAmount: '25.00',cmComm: '#####',AdjComm: '#####',ValComm: '#####', Adjust: '#####'}]
+    });
+  }
 
+  opensweetalerts(){
+    Swal.fire({
+      title: 'Warning',
+
+      text: "This OR no.248522 has been already deposited. Do you still want to proceed?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'YES',
+      cancelButtonText:'NO',
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Success!',
+          'Work item completed with Commission Adjustment trans. no. 20242',
+          'success'
+        )
+      }
+    })
+  }
+  openweetalertclose(){
+    Swal.fire({
+      title: 'Close',
+  text: "",
+  icon: 'error',
+  confirmButtonColor: '#7066e0',
+  confirmButtonText: 'OK'
+
+    })
+  }
+
+  opensweetalertcomplete(){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This will tag the transaction as approved",
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'YES',
+      cancelButtonText:'NO'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Success!',
+          'Work item completed with Commission Adjustment trans. no. 20242',
+          'success'
+        )
+      }
+    })
+  }
+
+
+  swalcheckbox(){
+        Swal.fire(
+          'Success!',
+          'Your coded details are correct',
+          'success'
+        )
+
+
+  }
   @ViewChild(MatTable) table!: MatTable<PeriodicElement>;
 
   removeData(row: any): void {
@@ -51,12 +124,18 @@ export class AppComponent implements OnInit{
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
+
+  }
+  save() {
+    console.log( 'Save', this.rowData );
   }
 
 
 
+
+
   columnDefs = [
-    {headerName: "Delete", field: "Delete", checkboxSelection:true, width: 100 },
+    {headerName: "" , field: "Delete", checkboxSelection:true, width: 100},
     {headerName: "#", field: "IdNumber",editable: true, width: 100},
     {headerName: "InvoiceNo", field: "InvoiceNo",sortable: true,  editable: true, resizable: true, filter: true, width: 130,},
     {headerName: "Coverage Description", field: "CovDescrip",sortable: true,  editable: true, resizable: true, filter: true, width: 185},
@@ -148,6 +227,14 @@ const ELEMENT_DATA3: AdjustmentSumarry [] = [
   {ban:'Adjustment',PremiumAmount:'0.00',TotalCharges:'0.00',GrossAR:'0.00	',GrossUnIN:'0.00',GrossComm:'212.67',NetComm:'212.67', OutputVat:'25.52', GrossAP:'(238.19)', Wtax:'31.90',NextDue:'(206.29)'},
   {ban:'Net Balance',PremiumAmount:'4,253.54',TotalCharges:'572.95',GrossAR:'4,826.49',GrossUnIN:'0.00',GrossComm:'1,276.06',NetComm:'1,276.06', OutputVat:'153.13', GrossAP:'3,397.30', Wtax:'191.41',NextDue:'3,588.71'},
  ];
+
+function save() {
+  throw new Error('Function not implemented.');
+}
+
+function addRow() {
+  throw new Error('Function not implemented.');
+}
 /**
  * @title Basic use of `<table mat-table>`
  */
