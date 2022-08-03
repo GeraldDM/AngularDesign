@@ -50,10 +50,12 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { AgGridModule } from 'ag-grid-angular';
+import { BtnCellRenderer } from './btn-cell-renderer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, BtnCellRenderer
+
   ],
   imports: [
     BrowserModule,
@@ -105,6 +107,7 @@ import { AgGridModule } from 'ag-grid-angular';
     MatTooltipModule,
     MatTreeModule,
     OverlayModule,
+    AgGridModule.withComponents([BtnCellRenderer]),
     AgGridModule.withComponents([]),
     AgGridModule
   ],

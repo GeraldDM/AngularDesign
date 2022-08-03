@@ -105,111 +105,23 @@
     </mat-toolbar>
 
     <!-- TABLE -->
-    <div class="table-heading">
-      <button class="btn btn-primary mb-3" style="color:red; background-color:white; border:0px;margin-right: 5px; margin-left: 5px;" mat-raised-button (click)="onDeleteRow()"><mat-icon>remove_circle</mat-icon></button>
-      <button class="btn btn-primary mb-3" style="color:blue; background-color:white; border:0px;" mat-raised-button (click)=" addRow()"><mat-icon>add_circle</mat-icon></button>
-    </div>
-      <ag-grid-angular style="width: 100%; height: 50vh;" class="ag-theme-alpine"  [rowData]="rowData" [columnDefs]="columnDefs"  #agGrid
-        [columnDefs]="columnDefs"
-        rowSelection="multiple"> <button class="btn btn-primary mb-3" style="color:white; background-color:red; border:0px;" mat-raised-button (click)="onDeleteRow()">Delete Row</button>
-        </ag-grid-angular>
+
+      <ag-grid-angular style="width: 100%; height: 50vh;" class="ag-theme-alpine"  [rowData]="rowData" [columnDefs]="columnDefs" #agGrid rowSelection="multiple" >
+      </ag-grid-angular>
 
 
-      <div class="commissionAdjInvoAdj" style="padding: 10px 0px;">Invoice/s for Adjustment </div>
       <div class="commissionAdjInvoAdjMainContainer" style="overflow-x: auto; overflow-y: auto;">
 
 
 
-        <table mat-table [dataSource]="dataSource" class="commissionAdjInvoAdjTableContainer">
-          <ng-container matColumnDef="Delete">
-            <th mat-header-cell *matHeaderCellDef width="50px">  </th>
-            <td mat-cell *matCellDef="let element"> <button class="commissionAdjDeletebtn" (click)="removeData(element)" mat-raised-button><mat-icon>delete_outline</mat-icon></button>
-             {{element.Delete}} </td>
-
-
-          </ng-container>
-          <!-- Hastag Column -->
-          <ng-container  matColumnDef="hastag">
-            <th mat-header-cell *matHeaderCellDef width="60px"> # </th>
-            <td mat-cell  *matCellDef="let element"style="text-align:center;">  {{element.hastag}} </td>
-          </ng-container>
-
-          <!-- Invoice No. Column -->
-          <ng-container matColumnDef="InvoiceNo">
-            <th mat-header-cell *matHeaderCellDef width="150px"> Invoice&nbsp;No. </th>
-            <td mat-cell *matCellDef="let element" style="text-align:center;"> {{element.InvoiceNo}} </td>
-          </ng-container>
-
-          <!-- Coverage Description Column -->
-          <ng-container matColumnDef="CovDescrip">
-            <th mat-header-cell *matHeaderCellDef width="200px"> Coverage&nbsp;Description</th>
-            <td mat-cell *matCellDef="let element" style="text-align:left; padding: 0px 15px;"> {{element.CovDescrip}} </td>
-          </ng-container>
-
-          <!-- Covered Amount Column -->
-          <ng-container matColumnDef="CovAmount">
-            <th mat-header-cell *matHeaderCellDef width="150px"> Covered&nbsp;Amount</th>
-            <td mat-cell *matCellDef="let element"> {{element.CovAmount}} </td>
-          </ng-container>
-
-          <!-- PREMIUM RATE Column -->
-          <ng-container matColumnDef="PrimRate">
-            <th mat-header-cell *matHeaderCellDef width="150px"> Premium&nbsp;Rate</th>
-            <td mat-cell *matCellDef="let element"> {{element.PrimRate}} </td>
-          </ng-container>
-
-          <!-- PREMIUM Amount Column -->
-          <ng-container matColumnDef="PrimAmount">
-            <th mat-header-cell *matHeaderCellDef width="150px"> Premium&nbsp;Amount</th>
-            <td mat-cell *matCellDef="let element"> {{element.PrimAmount}} </td>
-          </ng-container>
-
-          <!-- COMMISSION RATE Column -->
-          <ng-container matColumnDef="CommRate">
-            <th mat-header-cell *matHeaderCellDef width="160px"> Commission&nbsp;Rate</th>
-            <td mat-cell *matCellDef="let element"> {{element.CommRate}} </td>
-          </ng-container>
-
-           <!-- COMMISSION AMOUNT Column -->
-           <ng-container matColumnDef="CommAmount">
-            <th mat-header-cell *matHeaderCellDef width="180px"> Commission&nbsp;Amount</th>
-            <td mat-cell *matCellDef="let element"> {{element.CommAmount}} </td>
-          </ng-container>
-
-           <!-- CM COMMISSION Column -->
-           <ng-container matColumnDef="cmComm">
-            <th mat-header-cell *matHeaderCellDef width="190px"> CM&nbsp;Commission</th>
-            <td mat-cell *matCellDef="let element"> {{element.cmComm}} </td>
-          </ng-container>
-          <!--ADJUSTED COMMISSION Column-->
-          <ng-container matColumnDef="AdjComm">
-            <th mat-header-cell *matHeaderCellDef width="200px"> Adjusted&nbsp;Commission/th>
-            <td mat-cell *matCellDef="let element"> {{element.cmComm}} </td>
-          </ng-container>
-          <!--VALID COMMISSION	 Column-->
-          <ng-container matColumnDef="ValComm">
-            <th mat-header-cell *matHeaderCellDef width="200px"> Valid&nbsp;Commission</th>
-            <td mat-cell *matCellDef="let element"> {{element.ValComm}} </td>
-          </ng-container>
-          <!--ADJUSTMENT Column-->
-          <ng-container matColumnDef="Adjust">
-            <th mat-header-cell *matHeaderCellDef width="200px"> Adjustment</th>
-            <td mat-cell *matCellDef="let element"> {{element.Adjust}} </td>
-          </ng-container>
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
 
       </div>
-      <!--<mat-form-field appearance="fill">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>-->
-      <!--2nd Table-->
     </form>
+
+    <!--Second Table-->
+
+
+
     <div class="" style="margin-top:30px;">
       <div class="TCPI">Total Coverage per Invoice</div>
       <div class="main-mat-elevation-z85" style="overflow-x: auto; overflow-y: auto;">
@@ -256,10 +168,10 @@
         </table>
       </div>
     </div>
-    <br>
-    <br>
-    <br>
 
+    <br>
+    <br>
+    <br>
       <div class="main-pscn">
           <div class="pscn">
     <button (click)="opensweetalerts()" class="pscn-save" mat-raised-button > <i class="fas fa-save" ></i>&nbsp;SAVE</button>
@@ -282,7 +194,7 @@
         <p class="DateReq" style="font-family: 'Poppins', sans-serif;"></p>
         <mat-form-field appearance="outline" class="DateReq-form-field">
           <mat-label >Date&nbsp;Requested:</mat-label>
-          <input matInput [matDatepicker]="datepicker">
+          <input matInput [matDatepicker]="datepicker" readonly="true">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
           <mat-datepicker #datepicker>
@@ -507,6 +419,7 @@
           <option  value="SUBMIT FOR APPROVAL">SUBMIT FOR APPROVAL</option>
           <option value="2">2</option>
           <option value="3">3</option>
+
           <option value="4">4</option>
         </select>
       </mat-form-field>
