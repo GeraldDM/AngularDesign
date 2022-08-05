@@ -150,13 +150,24 @@ export class AppComponent implements OnInit{
 
 
   swalcheckbox(){
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "This will tag the transaction as approved",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'YES',
+      cancelButtonText:'NO'
+    }).then((result) => {
+      if (result.isConfirmed) {
         Swal.fire(
           'Success!',
-          'Your coded details are correct',
+          'Work item completed with Commission Adjustment trans. no. 20242',
           'success'
         )
-
-
+      }
+    })
   }
 
 
